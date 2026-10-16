@@ -162,8 +162,7 @@ if (!is.null(simple_or)) {
 # D. RI-CLPM (Random-Intercept Cross-Lagged Panel Model) via lavaan
 #    Wide format: one row per person, 5 waves of loneliness (L) and housing (H).
 #    Primary fit treats the binaries as numeric (common, interpretable
-#    approximation). A fully categorical version (ordered + WLSMV) is provided
-#    as a commented alternative below.
+#    approximation). 
 # -----------------------------------------------------------------------------
 df_wide <- df %>%
   transmute(person_id, wave_num, L = lonely_bin, H = unstable_bin) %>%
@@ -243,9 +242,6 @@ if (!is.null(fit_riclpm)) {
 }
 
 # ----- Fully categorical RI-CLPM (alternative; binary indicators) -------------
-# If you prefer to treat L/H as ordered/binary rather than numeric, declare the
-# indicators ordered and use the WLSMV estimator (theta parameterization).
-# This is more correct for binary data but is more prone to non-convergence:
 #
 # fit_riclpm_cat <- lavaan(
 #   riclpm_model, data = df_wide,
